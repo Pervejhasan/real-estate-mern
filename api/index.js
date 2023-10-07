@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from 'express';
 import mongoose from 'mongoose';
@@ -14,7 +15,8 @@ mongoose.connect(MONGO).then(()=>{
 console.log(error)
 });
 
-app.use(express.json())
+app.use(cookieParser());
+app.use(express.json());
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
 app.use((error,req,res,next)=>{
